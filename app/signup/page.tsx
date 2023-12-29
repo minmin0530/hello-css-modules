@@ -46,25 +46,27 @@ export default function Signup() {
     }
 
     return (
-        <main className={classes.main}>
-            <div className={classes.description}>
-                <h1>signup</h1>
-                <div className={classes.inputs}>
-                    <div className={classes.input}>
-                        <span className={classes.input_name} id="name">name</span><input type="text" onChange={inputName}></input>
-                    </div>
-                    <div className={classes.input}>
-                        <span className={classes.input_name} id="mail">mail</span><input type="email" onChange={inputMail}></input>
-                    </div>
-                    <div className={classes.input}>
-                        <span className={classes.input_name} id="password">password</span><input type="password" onChange={inputPassword}></input>
-                    </div>
-                    <div className={classes.input}>
-                        <span className={classes.input_name} id="confirm_password">confirm password</span><input type="password" onChange={inputConfirmPassword}></input>
-                    </div>
-                    <button className={classes.entry_button} onClick={entry}>entry</button>
-                </div>
-            </div>
-        </main>
+        <>
+          <main className={classes.main}>
+              <div className={classes.description}>
+                  <h1>signup</h1>
+                  <div className={classes.inputs}>
+                      <div className={classes.input}>
+                          <span className={classes.input_name} id="name">name</span><input type="text" onChange={inputName}></input>
+                      </div>
+                      <div className={classes.input}>
+                          <span className={classes.input_name} id="mail">mail</span><input type="email" onChange={inputMail}></input>
+                      </div>
+                      <div className={classes.input}>
+                          <span className={classes.input_name} id="password">password</span><input type="password" onChange={inputPassword}></input>
+                      </div>
+                      <div className={classes.input}>
+                          <span className={classes.input_name} id="confirm_password">confirm password</span><input type="password" onChange={inputConfirmPassword}></input>
+                      </div>
+                      <button className={classes.entry_button} onClick={entry}>entry</button>
+                  </div>
+              </div>
+          </main>
+        </>
     )
 }
