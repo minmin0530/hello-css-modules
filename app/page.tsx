@@ -1,13 +1,53 @@
+"use client"
 import Image from 'next/image'
-import styles from './page.module.css'
+import classes from './page.module.css'
+import { useState } from "react";
+import { FetchLogin } from './api/fetch_login';
 
 export default function Home() {
+  const [ entryMail, setEntryMail ] = useState<string>("");
+  const [ entryPassword, setEntryPassword ] = useState<string>("");
+
+
+  const login = async () => {
+    if (entryMail && entryPassword ) {
+        const data = {
+            collectionName: "test_izumi_data",
+            mail: entryMail,
+            password: entryPassword,
+        };
+
+        if (await FetchLogin(entryMail, entryPassword) == -1) {
+          setEntryMail("error!");
+        }
+        
+
+    }
+  }
+  const inputMail = (event: React.ChangeEvent<HTMLInputElement>): void => {
+      setEntryMail(event.target.value);
+  }
+  const inputPassword = (event: React.ChangeEvent<HTMLInputElement>): void => {
+      setEntryPassword(event.target.value);
+  }
+  
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
+    <main className={classes.main}>
+      <div className={classes.description}>
+
+        <h1>login</h1>
+        <div className={classes.inputs}>
+            <div className={classes.input}>
+                <span className={classes.input_name} id="mail">mail</span><input type="email" value={entryMail} onChange={inputMail}></input>
+            </div>
+            <div className={classes.input}>
+                <span className={classes.input_name} id="password">password</span><input type="password" onChange={inputPassword}></input>
+            </div>
+            <button className={classes.entry_button} onClick={login}>login</button>
+        </div>
         <p>
           Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
+          <code className={classes.code}>app/page.tsx</code>
         </p>
         <div>
           <a
@@ -19,7 +59,7 @@ export default function Home() {
             <Image
               src="/vercel.svg"
               alt="Vercel Logo"
-              className={styles.vercelLogo}
+              className={classes.vercelLogo}
               width={100}
               height={24}
               priority
@@ -28,9 +68,9 @@ export default function Home() {
         </div>
       </div>
 
-      <div className={styles.center}>
+      <div className={classes.center}>
         <Image
-          className={styles.logo}
+          className={classes.logo}
           src="/next.svg"
           alt="Next.js Logo"
           width={180}
@@ -39,10 +79,10 @@ export default function Home() {
         />
       </div>
 
-      <div className={styles.grid}>
+      <div className={classes.grid}>
         <a
           href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
+          className={classes.card}
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -54,7 +94,7 @@ export default function Home() {
 
         <a
           href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
+          className={classes.card}
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -66,7 +106,7 @@ export default function Home() {
 
         <a
           href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
+          className={classes.card}
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -78,7 +118,7 @@ export default function Home() {
 
         <a
           href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
+          className={classes.card}
           target="_blank"
           rel="noopener noreferrer"
         >
